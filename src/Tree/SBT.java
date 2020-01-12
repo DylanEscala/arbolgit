@@ -102,10 +102,13 @@ public class SBT<E> {
             n.setData(max(n.getLeft()));
             n.setLeft(remove(n.getData(), n.getLeft()));
         } else {
+            System.out.println("deleting");
             n = (n.getLeft() == null) ? n.getLeft() : n.getRight();
         }
+        if(n!=null){
         n.updateNode();
         n = n.balance();
+        }
         return n;
     }
 
