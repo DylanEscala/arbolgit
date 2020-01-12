@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -49,7 +50,10 @@ public class PaneOrganizer {
             @Override
             public void handle(ActionEvent arg0) {
                 if(add.getText().equals("")){
-                    
+                   Alert alerta = new Alert(Alert.AlertType.ERROR);
+                   alerta.setHeaderText("¡Error!");
+                   alerta.setContentText("¡No ha ingresado ningun número!");
+                   alerta.showAndWait();
                 }
                 else{    
                     try {
@@ -81,7 +85,10 @@ public class PaneOrganizer {
             @Override
             public void handle(ActionEvent arg0) {
                 if(del.getText().equals("")){
-                    
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setHeaderText("¡Error!");
+                    alerta.setContentText("¡No ha ingresado el número que desea eliminar!\nRevise nuevamente la entrada");
+                    alerta.showAndWait();
                 }
                 else{    
                     try {
@@ -112,6 +119,7 @@ public class PaneOrganizer {
                 
         
         pn.getChildren().add(vb);
+        
         return pn;
     }
 }
