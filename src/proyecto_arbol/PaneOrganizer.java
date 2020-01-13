@@ -25,47 +25,53 @@ import tree.SBT;
  * @author dylan
  */
 public class PaneOrganizer {
+
     SBT<Integer> tree;
     Pane pn;
     TextField add;
     TextField del;
     ScrollPane p;
-    
-    public PaneOrganizer(){
-        tree=new SBT<>(Comparator.comparing((Integer x) -> x));
-        p=tree.getPane();
-        pn=new Pane();
+
+    public PaneOrganizer() {
+        tree = new SBT<>(Comparator.comparing((Integer x) -> x));
+        p = new ScrollPane();
+        p = tree.getPane((int) p.getWidth());
+        p.setMaxHeight(1000);
+        p.setMaxWidth(1000);
+        pn = new Pane();
     }
-    public Pane getRoot(){
+
+    public Pane getRoot() {
         Button btna = new Button("Agregar");
         Button btnd = new Button("Eliminar");
-        add=new TextField();
-        del=new TextField();
-        HBox hb=new HBox();
-        hb.getChildren().addAll(btna,add,btnd,del);
-        VBox vb=new VBox();
-        vb.getChildren().addAll(hb,p);
-                
+        add = new TextField();
+        del = new TextField();
+        HBox hb = new HBox();
+        hb.getChildren().addAll(btna, add, btnd, del);
+        VBox vb = new VBox();
+        vb.getChildren().addAll(hb, p);
+
         btna.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
-                if(add.getText().equals("")){
-                   Alert alerta = new Alert(Alert.AlertType.ERROR);
-                   alerta.setHeaderText("¡Error!");
-                   alerta.setContentText("¡No ha ingresado ningun número!");
-                   alerta.showAndWait();
-                }
-                else{    
+                if (add.getText().equals("")) {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setHeaderText("¡Error!");
+                    alerta.setContentText("¡No ha ingresado ningun número!");
+                    alerta.showAndWait();
+                } else {
                     try {
-                        int i=Integer.parseInt(add.getText());
+                        int i = Integer.parseInt(add.getText());
                         tree.add(i);
-                        Thread t=new Thread(new Runnable() {
+                        Thread t = new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
-                                        p=tree.getPane();
+                                        p = tree.getPane((int) p.getWidth());
+                                        p.setMaxHeight(1000);
+                                        p.setMaxWidth(1000);
                                         vb.getChildren().remove(1);
                                         vb.getChildren().add(p);
                                     }
@@ -73,34 +79,35 @@ public class PaneOrganizer {
                             }
                         });
                         t.start();
-                        
+
                     } catch (Exception e) {
-                    }finally{
+                    } finally {
                         add.setText("");
-                                }
-            }
+                    }
+                }
             }
         });
         btnd.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
-                if(del.getText().equals("")){
+                if (del.getText().equals("")) {
                     Alert alerta = new Alert(Alert.AlertType.ERROR);
                     alerta.setHeaderText("¡Error!");
                     alerta.setContentText("¡No ha ingresado el número que desea eliminar!\nRevise nuevamente la entrada");
                     alerta.showAndWait();
-                }
-                else{    
+                } else {
                     try {
-                        int i=Integer.parseInt(del.getText());
+                        int i = Integer.parseInt(del.getText());
                         tree.remove(i);
-                        Thread t=new Thread(new Runnable() {
+                        Thread t = new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
-                                        p=tree.getPane();
+                                        p = tree.getPane((int) p.getWidth());
+                                        p.setMaxHeight(1000);
+                                        p.setMaxWidth(1000);
                                         vb.getChildren().remove(1);
                                         vb.getChildren().add(p);
                                     }
@@ -108,18 +115,17 @@ public class PaneOrganizer {
                             }
                         });
                         t.start();
-                        
+
                     } catch (Exception e) {
-                    }finally{
+                    } finally {
                         del.setText("");
-                                }
-            }
+                    }
+                }
             }
         });
-                
-        
+
         pn.getChildren().add(vb);
-        
+
         return pn;
     }
 }

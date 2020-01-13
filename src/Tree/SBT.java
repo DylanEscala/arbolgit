@@ -191,9 +191,9 @@ public class SBT<E> {
         }
     }
 
-    public ScrollPane getPane() {
+    public ScrollPane getPane(int x) {
         Pane p = new Pane();
-        getPane(p, root, 200, 20);
+        getPane(p, root, x/2, 20);
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(p);
         return scrollPane;
