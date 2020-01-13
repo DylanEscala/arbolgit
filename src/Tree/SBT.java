@@ -223,5 +223,5 @@ public class SBT<E> {
             getPane(p, nod.getLeft(), x-2*ra*h, y+3*ra);
             getPane(p, nod.getRight(), x+ra*(2)*h, y+3*ra);
         }
-    }
+    }//comm
 }
