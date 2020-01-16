@@ -98,4 +98,5 @@ public class Node<E> {
         }
         return this;
     }
+    
 }

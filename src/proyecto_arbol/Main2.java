@@ -40,8 +40,8 @@ public class Main2 extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         PaneOrganizer po=new PaneOrganizer();
-        Scene scene = new Scene(po.getRoot(),500,500);
-        
+        Scene scene = new Scene(po.getRoot(),1000,900);
+        stage.setTitle("ARBOL AVL");
         stage.setScene(scene);
         stage.show();
     }

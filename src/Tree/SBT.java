@@ -191,9 +191,9 @@ public class SBT<E> {
         }
     }
 
-    public ScrollPane getPane(int x) {
+    public ScrollPane getPane() {
         Pane p = new Pane();
-        getPane(p, root, x/2, 20);
+        getPane(p, root, 450,50);
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(p);
         return scrollPane;
@@ -206,7 +206,7 @@ public class SBT<E> {
             Line l2;
             StackPane pa = new StackPane();
             int ra=30;
-            Circle circle = new Circle(ra, Color.ALICEBLUE);
+            Circle circle = new Circle(ra, Color.CORNFLOWERBLUE);
             if(nod.getLeft()!=null){
                 l1=new Line(x+30, y+30, x-2*ra*h+30, y+3*ra+30);
                 p.getChildren().add(l1);
