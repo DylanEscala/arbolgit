@@ -8,6 +8,8 @@ package proyecto_arbol;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Comparator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -53,7 +55,7 @@ public class PaneOrganizer {
         del=new TextField();
         superior= new VBox();
     }
-    public Pane getRoot() throws FileNotFoundException{
+    public Pane getRoot(){
         add.setPrefSize(200, 40);
         del.setPrefSize(200, 40);
         titulo.setTextFill(Color.web("#ff0000", 0.8));
@@ -62,7 +64,12 @@ public class PaneOrganizer {
         superior.setAlignment(Pos.CENTER);
         
         //Colocar Imagenes en los Botones
-        FileInputStream input = new FileInputStream("src/resources/agregar.jpg");
+        FileInputStream input=null;
+        try {
+            input = new FileInputStream("src/resources/agregar.jpg");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PaneOrganizer.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Image image = new Image(input);
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
@@ -78,7 +85,12 @@ public class PaneOrganizer {
         
         //Boton Agregar
         btna.setStyle(style);
-        FileInputStream input2 = new FileInputStream("src/resources/eliminar.jpg");
+        FileInputStream input2=null;
+        try {
+            input2 = new FileInputStream("src/resources/eliminar.jpg");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PaneOrganizer.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Image imagen = new Image(input2);
         ImageView imageV = new ImageView(imagen);
         imageV.setFitHeight(30);
