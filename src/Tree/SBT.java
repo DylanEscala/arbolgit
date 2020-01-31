@@ -11,7 +11,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
@@ -102,7 +101,7 @@ public class SBT<E> {
             n.setData(max(n.getLeft()));
             n.setLeft(remove(n.getData(), n.getLeft()));
         } else {
-            System.out.println("deleting");
+            System.err.println("deleting");
             n = (n.getLeft() == null) ? n.getLeft() : n.getRight();
         }
         if(n!=null){
@@ -131,65 +130,8 @@ public class SBT<E> {
         }
         return true;
     }
-    /*
-    public boolean equals(SBT<E> tree) {
-        return equals(tree.root, root);
-    }
+    
 
-    private boolean equals(Node<E> node1, Node<E> node2) {
-        boolean right = false;
-        boolean left = false;
-        if (node1 == null && node2 == null) {
-            return true;
-        } else if (node1 != null && node2 != null) {
-            if (node1.getData().equals(node2.getData())) {
-                right = equals(node1.getRight(), node2.getRight());
-                left = equals(node1.getLeft(), node2.getLeft());
-                return right && left;
-            }
-        }
-        return false;
-    }
-
-    public int nivel(E data) {
-        return nivel(root, data);
-    }
-
-    private int nivel(Node<E> root, E data) {
-        int var = 0;
-        if (root == null) {
-            return 0;
-        } else if (root.getData().equals(data)) {
-            return 1;
-        } else {
-            if (f.compare(data, root.getData()) > 0) {
-                var = nivel(root.getRight(), data);
-                if (var > 0) {
-                    return 1 + var;
-                }
-            } else {
-                var = nivel(root.getRight(), data);
-                if (var > 0) {
-                    return 1 + var;
-                }
-            }
-            return 0;
-        }
-    }
-    */
-    public SBT<E> mirror() {
-        SBT<E> arbol = new SBT<>(f);
-        mirror(root, arbol.root);
-        return arbol;
-    }
-
-    private void mirror(Node<E> node, Node<E> node1) {
-        if (node != null) {
-            node1 = new Node<>(node.getData());
-            mirror(node.getLeft(), node1.getRight());
-            mirror(node.getRight(), node1.getLeft());
-        }
-    }
 
     public ScrollPane getPane() {
         Pane p = new Pane();

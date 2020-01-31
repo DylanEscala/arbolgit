@@ -137,8 +137,7 @@ public class PaneOrganizer {
                                         root.getChildren().remove(1);
                                         p.setPrefViewportHeight(600);
                                         root.getChildren().add(p);
-                                        //vb.getChildren().remove(1);
-                                        //vb.getChildren().add(p);
+                                        
                                     }
                                 });
                             }
@@ -175,8 +174,7 @@ public class PaneOrganizer {
                                         root.getChildren().remove(1);
                                         p.setPrefViewportHeight(600);
                                         root.getChildren().add(p);
-                                        //vb.getChildren().remove(1);
-                                        //vb.getChildren().add(p);
+                                 
                                     }
                                 });
                             }
@@ -191,9 +189,6 @@ public class PaneOrganizer {
             }
         });
                 
-        
-        //pn.setStyle(style);
-        //pn.getChildren().add(vb);
         String escenario = "-fx-background-color: #F5FFFA;";
         root.setStyle(escenario);
         return root;

@@ -21,19 +21,7 @@ public class Main2 extends Application {
 
     public static void main(String[] args) {
         launch(args);
-//        SBT<Integer> tree=new SBT<>(Comparator.comparing((Integer x) -> x));
-//        SBT<Integer> tree2=new SBT<>(Comparator.comparing((Integer x) -> x));
-//        for (int i=1;i<5;i++){
-//            tree.add(i);
-//            tree2.add(i);
-//            tree2.add(i*2);
-//            tree.add(i*2);
-//            
-//        }
-//        System.out.println("Los arboles son iguales? "+tree.equals(tree2));
-//        SBT<Integer> mirror=tree.mirror();
-//        System.out.println("Nivel del 4: "+tree.nivel(4));
-//        System.out.println("El arbol contiene al 8? "+tree.contains(8));
+//      
 //    
     }
 
