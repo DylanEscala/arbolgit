@@ -74,12 +74,15 @@ public class Node<E> {
                 temp.setLeft(this);
                 return temp;
             } else {
-                Node<E> temp2 = this.right.left;
-                this.right.left = temp2.right;
-                temp2.right = this.right;
-                this.right = temp2.left;
-                temp2.left = this;
-                return temp2;
+                if(this.right!=null){
+                   Node<E> temp2 = this.right.left;
+                    this.right.left = temp2.right;
+                    temp2.right = this.right;
+                    this.right = temp2.left;
+                    temp2.left = this;
+                    return temp2;
+                }
+                
             }
         } else if (this.getBalance() < -1) {
             if (left!=null&&this.getLeft().balance <= 0) {
@@ -88,12 +91,15 @@ public class Node<E> {
                 temp.setRight(this);
                 return temp;
             } else {
-                Node<E> temp2 = this.left.right;
-                this.left.right = temp2.left;
-                temp2.left = this.left;
-                this.left = temp2.right;
-                temp2.right = this;
-                return temp2;
+                if(this.left!=null){
+                    Node<E> temp2 = this.left.right;
+                    this.left.right = temp2.left;
+                    temp2.left = this.left;
+                    this.left = temp2.right;
+                    temp2.right = this;
+                    return temp2;
+                }
+                
             }
         }
         return this;

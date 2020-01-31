@@ -131,7 +131,7 @@ public class SBT<E> {
         }
         return true;
     }
-
+    /*
     public boolean equals(SBT<E> tree) {
         return equals(tree.root, root);
     }
@@ -176,9 +176,9 @@ public class SBT<E> {
             return 0;
         }
     }
-
+    */
     public SBT<E> mirror() {
-        SBT<E> arbol = new SBT<E>(f);
+        SBT<E> arbol = new SBT<>(f);
         mirror(root, arbol.root);
         return arbol;
     }
